@@ -15,12 +15,19 @@ public class MatrixTest {
         Random random = new Random();
         int n = random.nextInt(15);
         Matrix test_matrix = new Matrix(n,n);
-        System.out.println(test_matrix);
         try
         {test_matrix.create_symmetrical();}
         catch (IOException e)
         {e.printStackTrace();}
         assertEquals(test_matrix, test_matrix.transpose());
-        System.out.println(test_matrix);
+    }
+
+    @Test(expected = IOException.class)
+    public void testIOException_create_symmetrical()
+    {
+        Matrix test_matrix = new Matrix(5,4);
+
+        //This seems to not be working... figure it out
+        assertThrows(IOException.class, test_matrix::create_symmetrical);
     }
 }

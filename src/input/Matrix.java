@@ -70,7 +70,7 @@ public class Matrix {
         for(int i = 0; i < N; i++)
             for(int j = 0; j < N; j++)
             {
-                if(this.data.get(i).get(j) != that.data.get(i).get(j))
+                if(!this.data.get(i).get(j).equals(that.data.get(i).get(j)))
                     return false;
             }
         return true;
@@ -78,13 +78,13 @@ public class Matrix {
 
     @Override
     public String toString() {
-        String result = "N:" + N + "\n";
+        StringBuilder result = new StringBuilder();
         for(int i = 0; i < N; i ++) {
-            result += "\n";
-            for (int j = 0; j < N; j++) {
-                result += data.get(i).get(j) + "\t";
+            result.append("\n");
+            for (int j = 0; j < M; j++) {
+                result.append(data.get(i).get(j)).append("\t");
             }
         }
-        return result;
+        return result.toString();
     }
 }
