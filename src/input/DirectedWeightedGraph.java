@@ -18,10 +18,18 @@ public class DirectedWeightedGraph {
         }
     }
 
+    // TODO: split for graphs.
+//    public DirectedWeightedGraph split(int k)
+//    {
+//
+//    }
+
     public Matrix getWeight_matrix()
     {
         return this.weight_matrix;
     }
+
+    public ArrayList<Integer> getVertex() {return this.vertex;}
 
     @Override
     public String toString() {

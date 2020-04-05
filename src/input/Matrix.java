@@ -16,6 +16,8 @@ public class Matrix {
         this.M = M;
         data = new ArrayList<>(N);
 
+        //consider decoupling the random number filing to a separate method.
+
         for(int i = 0; i < N; i++) {
             data.add(new ArrayList<>(M));
             for (int j = 0; j < M; j++) {
@@ -56,6 +58,32 @@ public class Matrix {
 
             }
         return trasnposed;
+    }
+
+    public Matrix split(int k)
+    {
+        //assume that k is lesser than M;
+        Matrix result = new Matrix(this.N, k);
+        for(int i=0; i<this.N; i++)
+            for(int j=0; j<k; j++)
+            {
+                int value_of_ij = data.get(i).get(j);
+                ArrayList<Integer> value_of_result_ij = result.data.get(i);
+                value_of_result_ij.set(j, value_of_ij);
+                result.data.set(i, value_of_result_ij);
+            }
+        return result;
+    }
+
+    // TODO: add conversion from ArrayList to Matrix?
+//    public ArrayList<Integer> getElement(int i)
+//    {
+//        return ;
+//    }
+
+    public int getElement(int i, int j)
+    {
+        return this.data.get(i).get(j);
     }
 
     public int getN() {
