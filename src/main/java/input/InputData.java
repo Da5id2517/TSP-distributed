@@ -23,6 +23,11 @@ public class InputData {
             }
     }
 
+    public Table<Integer, Integer, Integer> getGraph()
+    {
+        return this.graph;
+    }
+
     //subset of k vertices.
     public Map<Integer, Map<Integer, Integer>> split(int begin, int end)
     {
@@ -37,13 +42,5 @@ public class InputData {
         return "InputData{" +
                 "graph=" + graph +
                 '}';
-    }
-
-    public static void main(String[] args) {
-        //TODO: make this a test
-        InputData input = new InputData(new Matrix(5));
-        System.out.println(input);
-        System.out.println(input.graph.column(1));
-        System.out.println(input.split(3, 5));
     }
 }
