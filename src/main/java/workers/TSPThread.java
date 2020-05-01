@@ -18,12 +18,11 @@ public class TSPThread extends Thread {
         this.current_vertex = current_vertex;
     }
 
-    public <K, V extends Comparable<V>> K minValueKey(Map<K, V> map) throws NoSuchElementException {
+    public <K, V extends Comparable<V>> K minValueKey(Map<K, V> map) {
         Optional<Map.Entry<K, V>> minEntry = map.entrySet()
                 .stream()
                 .min(Map.Entry.comparingByValue());
-        return minEntry.get()
-                .getKey();
+        return minEntry.map(Map.Entry::getKey).orElse(null);
     }
 
     @Override
@@ -42,13 +41,8 @@ public class TSPThread extends Thread {
         //remove all nodes already in the mst_vertice set
         for(Integer visited : mst_vertices)
         { sub_graph.remove(visited); }
-
-        try
-        {
-            mst_vertices.add(minValueKey(sub_graph));
-        } catch (NoSuchElementException e)
-        {
-            e.printStackTrace();
-        }
+        Integer minimal_value_key = minValueKey(sub_graph);
+        if(minimal_value_key != null)
+        { mst_vertices.add(minimal_value_key); }
     }
 }
