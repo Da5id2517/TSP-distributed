@@ -13,7 +13,7 @@ public class Matrix {
         Random random = new Random();
         for (int i = 0; i < this.N; i++)
             for (int j = 0; j < i; j++) {
-                data[i][j] = random.nextInt(100 - 10) + 10;
+                data[i][j] = random.nextInt(90) + 10;
                 data[j][i] = data[i][j];
             }
     }

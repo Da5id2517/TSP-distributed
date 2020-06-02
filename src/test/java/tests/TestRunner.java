@@ -7,7 +7,7 @@ import org.junit.runner.notification.Failure;
 
 public class TestRunner {
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(InputDataTest.class);
+        Result result = JUnitCore.runClasses(DistributedTSPTest.class);
         for(Failure failure : result.getFailures())
         {
             System.out.println("Failed: " + failure.toString());

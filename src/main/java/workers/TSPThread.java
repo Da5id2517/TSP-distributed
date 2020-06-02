@@ -1,9 +1,9 @@
 package workers;
 
 import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+
 
 public class TSPThread extends Thread {
 
@@ -18,18 +18,12 @@ public class TSPThread extends Thread {
         this.current_vertex = current_vertex;
     }
 
-    public <K, V extends Comparable<V>> K minValueKey(Map<K, V> map) {
-        Optional<Map.Entry<K, V>> minEntry = map.entrySet()
-                .stream()
-                .min(Map.Entry.comparingByValue());
-        return minEntry.map(Map.Entry::getKey).orElse(null);
-    }
 
     @Override
     public void run() {
         System.out.println(current_vertex + " : " + sub_graph);
 
-        if(mst_vertices.size() == sub_graph.size() - 1)
+        if(mst_vertices.size() == sub_graph.size() - 1 && !mst_vertices.contains(current_vertex))
         {
             mst_vertices.add(current_vertex);
             return;
@@ -41,7 +35,7 @@ public class TSPThread extends Thread {
         //remove all nodes already in the mst_vertice set
         for(Integer visited : mst_vertices)
         { sub_graph.remove(visited); }
-        Integer minimal_value_key = minValueKey(sub_graph);
+        Integer minimal_value_key = Master.minValueKey(sub_graph);
         if(minimal_value_key != null)
         { mst_vertices.add(minimal_value_key); }
     }
