@@ -45,7 +45,7 @@ public class Master {
         }
         while(mst_vertices_distributed.size() != N)
         {/* Active wait */}
-        System.out.println(mst_vertices_distributed);
+        System.out.println("The shortest path is: " + mst_vertices_distributed);
         return mst_vertices_distributed;
     }
 
