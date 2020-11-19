@@ -38,7 +38,7 @@ public class TSPThread extends Thread {
                     sub_graph +
                     "\nfound the closest neighbour to be " +
                     minimal_value_key
-                    + ".");
+                    + ".\n");
         }
 
     }

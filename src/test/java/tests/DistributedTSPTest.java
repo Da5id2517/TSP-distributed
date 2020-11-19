@@ -35,9 +35,11 @@ public class DistributedTSPTest extends TestCase {
 
         long time_elapsed_procedural = (end_time_procedural - start_time_procedural)/1000;
         long time_elapsed_distributed = (end_time_distributed - start_time_distributed)/1000;
+        long factor_of_acceleration = time_elapsed_procedural/ time_elapsed_distributed;
 
         System.out.println("Procedural execution time in milliseconds: "+ time_elapsed_procedural);
         System.out.println("Distributed execution time in milliseconds: "+ time_elapsed_distributed);
+        System.out.println("Factor of acceleration is " + factor_of_acceleration);
 
         //TODO: split into separate tests.
         assertEquals(distributed_path, procedural_path);
